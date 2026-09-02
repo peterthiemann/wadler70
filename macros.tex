@@ -1,0 +1,67 @@
+\newcommand\syntax[1]{\textup{\texttt{#1}}}
+\newcommand\TInt{\syntax{Int}}
+\newcommand\TOut[2]{\syntax{!}{#1}\syntax{.}{#2}}
+\newcommand\TInp[2]{\syntax{?}{#1}\syntax{.}{#2}}
+\newcommand\TEnd{\syntax{End}}
+\newcommand\TCase[2]{\syntax{case}~{#1}\{#2\}}
+
+\newcommand\Lin{\syntax{lin}}
+\newcommand\Unr{\syntax{unr}}
+
+\newcommand\KSession{\syntax{s}}
+\newcommand\KType{\syntax{t}}
+
+\newcommand\COut[1]{\syntax{!}{#1}}
+\newcommand\CInp[1]{\syntax{?}{#1}}
+\newcommand\CSkip{\syntax{Skip}}
+\newcommand\CSeq[2]{#1\syntax{;}#2}
+
+\newcommand\Sem[1]{\llbracket#1\rrbracket}
+
+\definecolor{darkviolet}{rgb}{0.5,0,0.4}
+\definecolor{darkgreen}{rgb}{0,0.4,0.2}
+\definecolor{darkblue}{rgb}{0.1,0.1,0.9}
+\definecolor{darkgrey}{rgb}{0.5,0.5,0.5}
+\definecolor{lightblue}{rgb}{0.4,0.4,1}
+
+\lstdefinestyle{eclipse}{
+  breaklines=true,
+  basicstyle=\sffamily\small,
+  emphstyle=\color{red}\bfseries,
+  keywordstyle=\color{darkviolet}\bfseries,
+  commentstyle=\color{darkgreen},
+  stringstyle=\color{darkblue},
+  numberstyle=\color{darkgrey},%\lstfontfamily,
+  emphstyle=\color{red},
+  showstringspaces=false,
+}
+
+\lstset{
+  language=Haskell,
+  style=eclipse,
+  morekeywords=[1]{Int, Char, Bool, Skip, type, dualof, rec, let, in, if, then,
+    else, new, send, receive, select, fork, case, of, data, match,
+    with, natrec, True,
+    False}, %  MU, ML, SU, SL, TU, TL
+  % sensitive=true,
+  literate=
+  {->}{$\rightarrow$}2
+  {-o}{$\multimap$}2
+  {=>}{$\Rightarrow$}2 
+  {forall}{$\forall$}1
+  {Lambda}{$\Lambda$}1
+  {lambda}{$\lambda$}1
+  {mu}{$\mu$}1
+  {alpha}{$\alpha$}1
+  {oplus}{$\oplus$}1
+  {+\{}{$\oplus$\{}2
+  ,
+  breaklines=true,
+  tabsize=2
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides-session-types-plmw"
+%%% End:

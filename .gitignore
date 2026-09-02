@@ -1,0 +1,30 @@
+# Agda interface files
+*.agdai
+
+# Snippet extraction (runagdatex / agdatex.py)
+latex/
+agda-generated.tex
+agda-macros.txt
+.agdatex-hashes.json
+
+# LaTeX build products
+*.aux
+*.log
+*.out
+*.nav
+*.snm
+*.toc
+*.vrb
+*.ptb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+wadler70.pdf
+
+# Editor and scratch files
+auto/
+tmp/
+*~
+\#*\#
+.#*
+.DS_Store

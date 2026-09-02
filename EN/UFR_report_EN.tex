@@ -1,0 +1,47 @@
+% File: UFR_report_EN.tex
+% Author: Dr. Carl Skarbek for the Marketing & Events Department at the University of Freiburg
+% October 2024
+% This file should not be modified to ensure that the corporate design elements of the University of Freiburg are preserved.
+% Rights reserved by the Albert-Ludwigs-Universität Frieburg
+% Further information on the corporate design of the University of Freiburg can be found at https://cd.uni-freiburg.de/
+
+% Description: This setup document implements all necessary elements for the University of Freiburg corporate design as it relates to creating reports in English language. For German lagnuage reports, please use UFR_cd_Bericht_setup_DE.tex. Please only use setions, subsections, and subsubsections in order to adhere to the corporate design. 
+
+\input{UFR_cd_report_setup_EN} % Load setup file
+
+\begin{document}
+\begin{titlepage}
+\Huge \textcolor{uniblau}{De finibus bonorum et malorum}% Report title
+   
+        \vspace{3cm} %Space before main graphic
+            
+        \raggedleft\includegraphics[width=0.95\textwidth]{box.png} %Personalised graphic (optional. Remove command if no graphic used)
+            
+      \vfill
+      \raggedleft\includegraphics[width = 8.5cm]{UFR_Wortmarke.pdf} % Uni Logo, bottom right
+
+\end{titlepage}
+\thispagestyle{empty} %Next lines set page number to 1 after table of contents. Do not remove.
+\tableofcontents % Do not remove
+\clearpage % Do not remove
+\pagenumbering{arabic} % Do not remove
+\newgeometry{left=1.6cm,right=1.6cm, top=2.88cm, bottom = 2.6cm} % custom margins to adhere to corporate design
+
+\section{Section one}
+
+\subsection{subsection one}
+\lipsum[1]
+\subsubsection{subsub one}
+\lipsum[1]\footnote{This is a footnote}
+\lipsum[2]\footnote{This is another footnote}
+
+\section{Section Two}
+\subsection{subsection two}
+\lipsum[3-4]
+\subsubsection{subsub two}
+\lipsum[5]
+\subsubsection{subsub three}
+\lipsum[6]
+\subsection{subsection three}
+\lipsum[7-8]
+\end{document}

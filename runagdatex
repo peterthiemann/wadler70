@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -eu
+
+python3 ./agdatex.py \
+  -v \
+  -f \
+  -e agda-generated.tex \
+  -i agda-macros.txt \
+  -r . \
+  LambdaSigmaExamples.agda \
+  WeakeningExamples.agda \
+  WeakeningComparison.agda \
+  WeakeningEta.agda \
+  STLC70.agda \
+  STLC70Notation.agda \
+  WeakeningToSTLC70.agda

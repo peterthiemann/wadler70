@@ -1,0 +1,120 @@
+% File: UFR_cd_report_setup_EN.tex
+% Author: Dr. Carl Skarbek for the Marketing & Events Department at the University of Freiburg
+% October 2024
+% This file should not be modified to ensure that the corporate design elements of the University of Freiburg are preserved.
+% Rights reserved by the Albert-Ludwigs-Universität Frieburg
+% Further information on the corporate design of the University of Freiburg can be found at https://cd.uni-freiburg.de/
+
+% Description: This setup document implements all necessary elements for the University of Freiburg corporate design as it relates to creating reports in English language. For German lagnuage reports, please use UFR_cd_Bericht_setup_DE.tex. Please only use setions, subsections, and subsubsections in order to adhere to the corporate design. 
+
+\documentclass[a4paper, 12pt, titlepage]{article}
+% Specifies the document class (article) and sets paper size, font size, and title page options
+
+% Packages for various functionalities
+\usepackage[onehalfspacing]{setspace} % Sets line spacing to 1.5 throughout the document
+\usepackage[skip=8mm]{parskip} % Adds an 8mm space between paragraphs
+\usepackage[hidelinks]{hyperref} % Set up hyperlinks in the document (hides colored boxes around links)
+\usepackage{graphicx} % Required for inserting images
+
+
+% Font and encoding settings
+\usepackage{helvet} % Uses Helvetica font
+\usepackage[T1]{fontenc} % Enables font encoding for special characters
+\renewcommand{\familydefault}{\sfdefault} % Sets Sans Serif as the default font family
+
+% Page layout settings
+\usepackage[ left=1.6cm,
+            right=1.6cm,
+            top=2.88cm,
+            bottom=1cm]{geometry} % Defines document margins
+
+% Color definitions
+\usepackage[dvipsnames]{xcolor} % Defines colors for the document
+\definecolor{uniblau}{cmyk}{90, 75, 0, 0} % Defines a custom color (Uni Freiburg Blue)
+
+% Header and footer customization
+\usepackage{fancyhdr} % Allows for extended header and footer options
+\pagestyle{fancy} % Enables custom page styles
+\fancyhf{} % Clears all header and footer fields
+\renewcommand{\headrulewidth}{0pt} % Removes the header line
+\fancyfoot[R]{\thepage} % Places the page number in the right footer
+
+% Dummy text for testing
+\usepackage{lipsum} % Provides dummy text (Lorem Ipsum)
+
+% Indentation and alignment settings
+\usepackage{indentfirst} % Indents the first paragraph of each section
+\usepackage{ragged2e} % Enables ragged right alignment
+\setlength\RaggedRightParindent{\parindent} % Sets indentation for ragged right text
+\RaggedRight % Applies left justification to the entire document
+\setlength\parindent{10mm} % Sets paragraph indentation to 10mm
+
+% Table of Contents (TOC) customization
+\usepackage[titles]{tocloft} % Customizes the table of contents layout
+
+% Changes the TOC title for English documents
+\renewcommand{\contentsname}{Table of Contents} % ONLY INCLUDE IN ENGLISH VERSION
+
+% Spacing and alignment settings for TOC
+\renewcommand{\cftaftertoctitleskip}{15mm} % Space after TOC heading
+\renewcommand\cftsecafterpnum{\vskip10pt} % Spacing between sections in TOC
+\setlength{\cftsubsubsecindent}{18pt} % Indentation for subsubsections in TOC
+\renewcommand{\cftbeforesubsecskip}{10pt} % Spacing before subsections in TOC
+
+% Customizes the dotted lines in TOC
+\renewcommand{\cftdot}{\rule{1pt}{0.4pt}} % Replaces dots with a line
+\renewcommand{\cftdotsep}{0} % Removes space between dots
+
+% Customizes TOC section leaders
+\renewcommand\cftsecfont{\normalfont} % Sets section font in TOC
+\renewcommand\cftsecpagefont{\normalfont} % Sets section page font in TOC
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % Dotted leader for sections
+\renewcommand{\cftsubsecleader}{\color{uniblau}{\cftdotfill{\cftsubsecdotsep}}} % Colored dotted leader for subsections
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftsubsubsecdotsep}} % Dotted leader for subsubsections
+
+% Adds a dot after section numbers in the TOC
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+
+% Alignment settings for TOC entries
+\setlength\cftsubsecnumwidth{4em} % Width for subsection numbers in TOC
+\setlength\cftsubsubsecnumwidth{4em} % Width for subsubsection numbers in TOC
+
+% Increases font size and changes color for TOC entries
+\tocloftpagestyle{fancy} % Applies fancy style to TOC
+\renewcommand\cftsecfont{\large} % Increases section font size in TOC
+\renewcommand\cftsecpagefont{\large} % Increases section page number font size in TOC
+\renewcommand\cftsubsecfont{\large\color{uniblau}} % Changes color and size of subsection font in TOC
+\renewcommand\cftsubsecpagefont{\large\color{uniblau}} % Changes color and size of subsection page number in TOC
+\renewcommand\cftsubsubsecfont{\large} % Increases subsubsection font size in TOC
+\renewcommand\cftsubsubsecpagefont{\large} % Increases subsubsection page number font size in TOC
+
+% Custom section numbering format
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\space}% Default format
+   {\csname #1@cntformat\endcsname}}% Enable individual control
+\newcommand\section@cntformat{\thesection.\space} % Dot after section number
+\newcommand\subsection@cntformat{\thesubsection.\space} % Dot after subsection number
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % Dot after subsubsection number
+\makeatother
+
+% Spacing after headings within the document
+\usepackage{titlesec} % For title and heading customization
+\titlespacing*{\section}{0pt}{10pt}{18mm} % Spacing for sections
+\titlespacing*{\subsection}{0pt}{10pt}{5mm} % Spacing for subsections
+\titlespacing*{\subsubsection}{0pt}{10pt}{5mm} % Spacing for subsubsections
+
+% Fontsize for subsections and subsubsections
+\titleformat{\section}
+  {\normalfont\fontsize{16}{19}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{16}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{13}{15}\bfseries}{\thesubsubsection}{1em}{}  
+
+% Footnote styling
+\setlength{\skip\footins}{10mm} % Space above footnotes
+\renewcommand{\footnoterule}{\hspace{5mm}\rule{5cm}{0.4pt}\vspace{4mm}} % Custom footnote rule
+

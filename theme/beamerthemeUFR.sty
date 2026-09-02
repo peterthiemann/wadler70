@@ -1,0 +1,155 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeUFR}[2026/09/01 University of Freiburg beamer theme]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{helvet}
+\RequirePackage{tikz}
+
+\mode<presentation>
+
+% Colors aligned with the 2024 corporate-style sample in EN/.
+\definecolor{ufr-blue}{cmyk}{0.90,0.75,0,0}
+\definecolor{ufr-red}{cmyk}{0,1,0.8,0.2}
+\definecolor{ufr-black}{cmyk}{0,0,0,1}
+\definecolor{ufr-gray}{cmyk}{0,0,0,0.40}
+\definecolor{ufr-lightgray}{cmyk}{0,0,0,0.15}
+\definecolor{ufr-block}{RGB}{235,241,251}
+\definecolor{ufr-alert}{RGB}{252,236,232}
+\definecolor{ufr-example}{RGB}{233,244,236}
+
+% Backward-compatible aliases used by the existing deck content.
+\colorlet{alu-darkblue}{ufr-blue}
+\colorlet{alu-red}{ufr-red}
+\colorlet{alu-black}{ufr-black}
+\colorlet{alu-gray}{ufr-gray}
+\colorlet{alu-lightgray}{ufr-lightgray}
+\definecolor{alu-green}{rgb}{0,0.6,0}
+\definecolor{alu-lightblue}{RGB}{127,171,223}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\providecommand{\UFRwordmarkpath}{EN/UFR_Wortmarke.pdf}
+
+\setbeamercolor{structure}{fg=ufr-blue}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=ufr-black,bg=white}
+\setbeamercolor{alerted text}{fg=ufr-red}
+\setbeamercolor{frametitle}{fg=ufr-blue,bg=white}
+\setbeamercolor{framesubtitle}{fg=ufr-gray}
+\setbeamercolor{title}{fg=ufr-blue}
+\setbeamercolor{subtitle}{fg=ufr-black}
+\setbeamercolor{author}{fg=ufr-black}
+\setbeamercolor{institute}{fg=ufr-black}
+\setbeamercolor{date}{fg=ufr-black}
+
+\setbeamercolor*{author in head/foot}{fg=ufr-black,bg=ufr-lightgray}
+\setbeamercolor*{title in head/foot}{fg=ufr-black,bg=ufr-lightgray}
+\setbeamercolor*{date in head/foot}{fg=ufr-black,bg=ufr-lightgray}
+
+\setbeamercolor{block title}{fg=white,bg=ufr-blue}
+\setbeamercolor{block body}{fg=ufr-black,bg=ufr-block}
+\setbeamercolor{block title alerted}{fg=white,bg=ufr-red}
+\setbeamercolor{block body alerted}{fg=ufr-black,bg=ufr-alert}
+\setbeamercolor{block title example}{fg=white,bg=alu-green!80!black}
+\setbeamercolor{block body example}{fg=ufr-black,bg=ufr-example}
+\setbeamercolor{item projected}{fg=white,bg=ufr-blue}
+
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{size=\Large}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\large}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{footline}{size=\scriptsize}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamersize{text margin left=1.05cm,text margin right=1.05cm}
+
+\defbeamertemplate*{headline}{UFR}{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.18cm,dp=0pt]{structure}
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{frametitle}{UFR}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.05cm,dp=0.32cm,leftskip=1.05cm,rightskip=1.05cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle%
+    \ifx\insertframesubtitle\@empty%
+      \strut\par%
+    \else%
+      \par{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+    \fi%
+  \end{beamercolorbox}%
+  \hspace*{1.05cm}{\color{ufr-lightgray}\rule{\dimexpr\paperwidth-2.10cm\relax}{0.5pt}}%
+}
+
+\defbeamertemplate*{footline}{UFR}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=3.1ex,dp=1.2ex,leftskip=1.05cm]{author in head/foot}%
+      \usebeamerfont{footline}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=3.1ex,dp=1.2ex,center]{title in head/foot}%
+      \usebeamerfont{footline}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333334\paperwidth,ht=3.1ex,dp=1.2ex,rightskip=1.05cm,right]{date in head/foot}%
+      \usebeamerfont{footline}\insertshortdate\hspace*{1.5em}\insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\defbeamertemplate*{title page}{UFR}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[ufr-blue] (current page.north west) rectangle ([yshift=-0.18cm]current page.north east);
+  \end{tikzpicture}%
+  \vbox to \paperheight{%
+    \vspace*{1.55cm}%
+    \hspace*{1.05cm}%
+    \begin{minipage}[t]{0.72\paperwidth}
+      {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vspace{0.35cm}%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{minipage}%
+    \par%
+    \ifx\inserttitlegraphic\@empty%
+      \vspace{0.55cm}%
+    \else%
+      \vspace{0.9cm}%
+      \hspace*{1.05cm}%
+      \begin{minipage}[t]{0.78\paperwidth}
+        \inserttitlegraphic
+      \end{minipage}%
+      \par\vspace{0.5cm}%
+    \fi%
+    \vfill
+    \hspace*{1.05cm}{\color{ufr-lightgray}\rule{\dimexpr\paperwidth-2.10cm\relax}{0.6pt}}%
+    \par\vspace{0.45cm}%
+    \hspace*{1.05cm}%
+    \hbox to \dimexpr\paperwidth-2.10cm\relax{%
+      \begin{minipage}[b]{0.58\paperwidth}
+        {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+        \vspace{0.25cm}%
+        {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+        \vspace{0.2cm}%
+        {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+      \end{minipage}%
+      \hfill%
+      \raisebox{0pt}[0pt][0pt]{\includegraphics[width=3.9cm]{\UFRwordmarkpath}}%
+    }%
+    \vspace*{0.75cm}%
+  }%
+}
+
+\setbeamertemplate{headline}[UFR]
+\setbeamertemplate{frametitle}[UFR]
+\setbeamertemplate{footline}[UFR]
+\setbeamertemplate{title page}[UFR]
+
+\mode<all>
