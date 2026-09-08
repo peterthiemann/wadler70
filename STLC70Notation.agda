@@ -66,15 +66,12 @@ weaken-by-renaming M = refl
 -- The strictness witness can now be stated with exactly the same surface
 -- term syntax as its Explicit Weakening analogue.
 
+weakening-η : let _≡_ = _≡_ {A = Γ ▷ V ⊢ T ⇒ U} in
+  (N : Γ ⊢ T ⇒ U) →
 --! WeakeningEta {
-weakening-η :
-  (N : Γ ⊢ T ⇒ U)
-  → _≡_
-      {A = Γ ▷ V ⊢ T ⇒ U}
-      ((ƛ ((N ↑) · ●)) ↑)
-      (ƛ (((N ↑) ↑) · ●))
-weakening-η N = refl
+  ((ƛ ((N ↑) · ●)) ↑) ≡ (ƛ (((N ↑) ↑) · ●))
 --! }
+weakening-η N = refl
 
 -- Substitution η in the presentation notation.  The surface forms unfold
 -- and rewrite to STLC70's η-id and η-law, so those proofs apply verbatim.
@@ -95,3 +92,6 @@ weakening-η N = refl
 η-law σ = STLC70.η-law
 
 --! <
+
+app-law : _↑ {U = U} (M · N)  ≡ (M ↑) · (N ↑)
+app-law = refl

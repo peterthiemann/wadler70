@@ -62,34 +62,41 @@
 \titlegraphic{}
 
 \begin{document}
-
+{
+\usebackgroundtemplate{%
+  \includegraphics[width=\paperwidth,height=\paperheight]{return-of-the-renamings.png}%
+}
+\begin{frame}[plain]
+\end{frame}
+}
 \begin{frame}[plain,label=fp]
   \titlepage
 \end{frame}
 
 \section{The question}
 
-\begin{frame}{Substitution: a solved problem?}
+\begin{frame}{Substitution in PL metatheory: a solved problem?}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.47\textwidth}
       \begin{block}<1->{On paper}
         \centering
         \vspace{.25em}
         \(M[x:=N]\)
-        \vspace{.4em}
+        \vspace{.5em}
 
-        \small ``capture-free substitution''
+        \small ``capture-free substitution''\\
+        ``Barendregt convention''
       \end{block}
     \end{column}
     \begin{column}{.47\textwidth}
       \begin{alertblock}<2->{In a proof assistant}
         \small
-        representations, renamings, lifting, composition lemmas, \dots
+        representations (vectors, functions, \dots),\\ renamings,\\ composition lemmas,\\ \dots
       \end{alertblock}
     \end{column}
   \end{columns}
 
-  \uncover<2->{%
+  \uncover<3->{%
     \vspace{1.0em}
     \begin{center}
       \Large What if substitution lemmas were
@@ -112,8 +119,10 @@
           apply lemmas manually
         \item Since 2015: generate library by Autosubst; apply lemmas via tactics
         \item We ask for something different:
-      \begin{block}{Goal}
-        Intrinsically typed, inductive syntax where substitution equations normalize (in Agda)
+      \begin{block}{Goal (Agda)}
+        Intrinsically typed, inductive syntax, \\
+        de Bruijn variables, \\substitution equations normalize
+        to \refl{}
       \end{block}
       \end{itemize}
       \vspace{.4em}
@@ -231,26 +240,32 @@
         \]
       \end{block}
       \begin{block}{Double substitution}
+        \vspace{-\baselineskip}
         \[
           N[M]_1[L]_0
           \equiv N[L\Wk]_0[M]_0
         \]
       \end{block}
-    \end{column}
-    \begin{column}{.57\textwidth}
       \begin{block}{Commuting substitution}
+        \vspace{-\baselineskip}
         \[
           N[M]_0[L]_0
           \equiv N[L]_1[M[L]_0]_0
         \]
       \end{block}
-      \begin{alertblock}{Discriminators}
+    \end{column}
+    \begin{column}{.57\textwidth}
+      \begin{alertblock}{Discriminator EW}
         \begin{tabular}{ll}
         η-weak:&
         \(        \bigl(\lambda((N\Wk)\,\Blob)\bigr)\Wk
         \;\equiv\;
         \lambda\bigl(((N\Wk)\Wk)\,\Blob\bigr)
         \) \\
+        \end{tabular}
+      \end{alertblock}
+      \begin{alertblock}{Discriminators RoR}
+        \begin{tabular}{ll}
         η-id: & \RoREtaId \\
         η-law: &\RoREtaLaw
         \end{tabular}
@@ -320,6 +335,7 @@
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.47\textwidth}
       \begin{block}{Terms are inductive}
+        \vspace{-\baselineskip}
         \[
         \begin{array}{rcl}
           M,N ::= & \Blob & \text{newest variable}\\
@@ -355,6 +371,7 @@
   \begin{columns}[c,onlytextwidth]
     \begin{column}{.54\textwidth}
       \begin{block}{Proved and installed as rewrite rules}
+        \vspace{-\baselineskip}
         \begin{align*}
           M[\sigma][\tau] &\equiv M[\sigma \mathbin{;} \tau]\\
           \mathsf{id}\mathbin{;}\sigma &\equiv \sigma\\
@@ -365,17 +382,20 @@
     \end{column}
     \begin{column}{.42\textwidth}
       \centering
-      \begin{tikzpicture}[node distance=.45cm]
-        \node[system,fill=rorfill,minimum width=3.8cm] (intro) {introduction \quad \refl};
-        \node[system,fill=rorfill,minimum width=3.8cm,below=of intro] (double) {double substitution \quad \refl};
-        \node[system,fill=rorfill,minimum width=3.8cm,below=of double] (commute) {commuting substitution \quad \refl};
+      \begin{tikzpicture}[node distance=.1cm]
+        \node[system,fill=rorfill,minimum width=5.5cm] (intro) {introduction \quad \refl};
+        \node[system,fill=rorfill,minimum width=5.5cm,below=of intro] (double) {double substitution \quad \refl};
+        \node[system,fill=rorfill,minimum width=5.5cm,below=of double] (commute) {commuting substitution \quad \refl};
       \end{tikzpicture}
     \end{column}
   \end{columns}
 
   \vspace{.45em}
-  \centering
-  \textcolor{alu-darkblue}{Inductive syntax, intrinsically typed, much gets definitional.}
+  \begin{description}
+  \item[Pros:] \textcolor{alu-darkblue}{Inductive syntax, intrinsically typed,
+      much gets definitional.}
+  \item<2->[Cons:] \textcolor{alu-darkblue}{Not confluent, some benchmarks break.}
+  \end{description}
 \end{frame}
 
 \begin{frame}{EW: A Roadblock}
@@ -488,9 +508,11 @@
           \item check compatibility with reduction (local confluence)
         \end{enumerate}
       \end{block}
-      \begin{alertblock}{Deliberate omission}
-        η-id and η-law are not rewrite rules\\
-        They break local confluence
+      \begin{alertblock}{On η-id and η-law}
+        \begin{itemize}
+        \item not rewrite rules
+        \item break confluence
+        \end{itemize}
       \end{alertblock}
     \end{column}
   \end{columns}
@@ -502,10 +524,11 @@
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.46\textwidth}
       \begin{block}{Return of the Renamings}
-        \begingroup
-          \fontsize{6.8}{7.8}\selectfont
+        % \begingroup
+        % \fontsize{6.8}{7.8}\selectfont
+        \small
           \RoRWeakeningEta
-        \endgroup
+        % \endgroup
       \end{block}
       \centering
       \Large\textcolor{alu-green}{\refl}
@@ -593,8 +616,8 @@
     \item Term substitution and type substitution
     \item Terms indexed by types: $Expr\ \Gamma\ T$
     \item $\dots$ which get substituted: $Expr\ \Gamma\ (T[id])$
-    \item $\dots$ but $T \ne T[id]$,
-    \item $\dots$ so we either insert transports or make $T = T[id]$
+    \item $\dots$ but $T \not\equiv T[id]$,
+    \item $\dots$ so we either insert transports or make $T \equiv T[id]$
       definitional!
     \item $\dots$ transports can leak into lemmas
     \item $\dots$ better make them definitional
@@ -607,8 +630,8 @@
         \begin{itemize}
         \item canonicity for System F
         \item logical relations
-        \item all POPLmark challenge parts for System F\\
-          (intrisically scoped; Autosubst)
+        % \item all POPLmark challenge parts for System F\\
+        %   (intrisically scoped; Autosubst)
         \end{itemize}
       \end{block}
     \end{column}
@@ -656,7 +679,7 @@
     RoR
       & \yes
       & de Bruijn + renamings
-      & selected σ-laws; no η 
+      & extended σ-laws; no η 
     & \yes\\
     EW
       & \yes
@@ -696,13 +719,7 @@
   % \end{center}
 \end{frame}
 
-{
-\usebackgroundtemplate{%
-  \includegraphics[width=\paperwidth,height=\paperheight]{return-of-the-renamings.png}%
-}
-\begin{frame}[plain]
-\end{frame}
-}
+
 
 \begin{frame}{Questions?}
   \begin{center}
