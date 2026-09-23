@@ -581,14 +581,14 @@
     \begin{column}{.4\textwidth}
       \begin{block}{η-id}
         \[
-          \mathsf{var}_0 \mathbin{\cdot^S} \mathsf{wk}^S
+          \mathsf{var}\;\mathsf{here} \mathbin{\cdot^S} \mathsf{wk}^S
           \;\equiv\; \mathsf{id}^S
         \]
       \end{block}
       \begin{block}{η-law}
         \vspace{-\baselineskip}
         \[
-          \bigl(\mathsf{var}_0[\sigma]^S\bigr)
+          \bigl(\mathsf{var}\;\mathsf{here}[\sigma]^S\bigr)
           \mathbin{\cdot^S}
           \bigl(\mathsf{wk}^S\mathbin{;}\sigma\bigr)
           \;\equiv\; \sigma
@@ -789,65 +789,67 @@
 
   \vspace{.5em}
   \centering
-  Both substitution notations read \(M:\Delta\vdash A\), \(\sigma:\Delta\to\Gamma\), hence \(M[\sigma]:\Gamma\vdash A\).
+  Both substitution notations read \(M:\Delta\vdash A\) and
+  \(\sigma:\Delta\to\Gamma\),
+  hence \(M[\sigma]:\Gamma\vdash A\).
 \end{frame}
 
-\begin{frame}{Backup: the strictness witness is machine-checked}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{.47\textwidth}
-      \begin{block}{RoR: extracted proof}
-        \begingroup
-          \fontsize{6.6}{7.5}\selectfont
-          \RoRWeakeningEta
-        \endgroup
-      \end{block}
-    \end{column}
-    \begin{column}{.47\textwidth}
-      \begin{alertblock}{EW: extracted impossibility proof}
-        \small
-        \[
-          \bigl((\lambda((N\Wk)\Blob))\Wk
-          \equiv \lambda(((N\Wk)\Wk)\Blob)\bigr) \to \bot
-        \]
-        \begingroup
-          \footnotesize
-          \EWComparisonWeakeningEtaImpossibleProof
-        \endgroup
-      \end{alertblock}
-    \end{column}
-  \end{columns}
-\end{frame}
+% \begin{frame}{Backup: the strictness witness is machine-checked}
+%   \begin{columns}[T,onlytextwidth]
+%     \begin{column}{.47\textwidth}
+%       \begin{block}{RoR: extracted proof}
+%         \begingroup
+%           \fontsize{6.6}{7.5}\selectfont
+%           \RoRWeakeningEta
+%         \endgroup
+%       \end{block}
+%     \end{column}
+%     \begin{column}{.47\textwidth}
+%       \begin{alertblock}{EW: extracted impossibility proof}
+%         \small
+%         \[
+%           \bigl((\lambda((N\Wk)\Blob))\Wk
+%           \equiv \lambda(((N\Wk)\Wk)\Blob)\bigr) \to \bot
+%         \]
+%         \begingroup
+%           \footnotesize
+%           \EWComparisonWeakeningEtaImpossibleProof
+%         \endgroup
+%       \end{alertblock}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
-\begin{frame}{Backup: the full σ-calculus reaches η}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{.47\textwidth}
-      \begin{block}{η-id}
-        \small
-        \[
-          \mathsf{var}_0 \mathbin{\cdot^S} \mathsf{wk}^S
-          \equiv \mathsf{id}^S
-        \]
-        \begingroup
-          \footnotesize
-          \LSEtaIdProof
-        \endgroup
-      \end{block}
-    \end{column}
-    \begin{column}{.47\textwidth}
-      \begin{block}{η-law}
-        \small
-        \[
-          (\mathsf{var}_0[\sigma]^S)
-          \mathbin{\cdot^S}(\mathsf{wk}^S\mathbin{;}\sigma)
-          \equiv \sigma
-        \]
-        \begingroup
-          \footnotesize
-          \LSEtaLawProof
-        \endgroup
-      \end{block}
-    \end{column}
-  \end{columns}
-\end{frame}
+% \begin{frame}{Backup: the full σ-calculus reaches η}
+%   \begin{columns}[T,onlytextwidth]
+%     \begin{column}{.47\textwidth}
+%       \begin{block}{η-id}
+%         \small
+%         \[
+%           \mathsf{var}\;\mathsf{here} \mathbin{\cdot^S} \mathsf{wk}^S
+%           \equiv \mathsf{id}^S
+%         \]
+%         \begingroup
+%           \footnotesize
+%           \LSEtaIdProof
+%         \endgroup
+%       \end{block}
+%     \end{column}
+%     \begin{column}{.47\textwidth}
+%       \begin{block}{η-law}
+%         \small
+%         \[
+%           (\mathsf{var}\;\mathsf{here}[\sigma]^S)
+%           \mathbin{\cdot^S}(\mathsf{wk}^S\mathbin{;}\sigma)
+%           \equiv \sigma
+%         \]
+%         \begingroup
+%           \footnotesize
+%           \LSEtaLawProof
+%         \endgroup
+%       \end{block}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 \end{document}
